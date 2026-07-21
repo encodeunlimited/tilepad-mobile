@@ -52,20 +52,21 @@ jobs:
       - name: install cargo-license
         run: cargo install cargo-license
 
+      - uses: pnpm/action-setup@v6
+
+      - name: install frontend dependencies
+        run: pnpm install
+
       # These deps have some platform specific components which causes CI to fail due to
       # the package-lock.json having different locked platform specific installs
       - name: install problematic dependencies
-        run: npm install --save-dev @tauri-apps/cli
-
-      # Install frontend dependencies
-      - name: Install dependencies
-        run: npm install
+        run: pnpm install --save-dev @tauri-apps/cli --workspace-root
 
       - name: generate THIRD_PARTY_LICENSES.md
-        run: npm run make:licenses
+        run: pnpm run make:licenses
 
       - name: Build app bundle
-        run: npm run tauri android build
+        run: pnpm run tauri android build
         env:
           NDK_HOME: ${{ env.ANDROID_HOME }}/ndk/27.0.11902837
 
