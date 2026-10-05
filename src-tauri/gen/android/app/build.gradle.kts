@@ -81,8 +81,16 @@ rust {
     rootDirRel = "../../../"
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("com.fasterxml.jackson.core:jackson-databind:2.14.3")
+        force("com.fasterxml.jackson.core:jackson-core:2.14.3")
+        force("com.fasterxml.jackson.core:jackson-annotations:2.14.3")
+    }
+}
+
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
     implementation("androidx.webkit:webkit:1.6.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")
