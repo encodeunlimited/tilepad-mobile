@@ -92,3 +92,9 @@ dependencies {
 }
 
 apply(from = "tauri.build.gradle.kts")
+
+tasks.withType<com.android.build.gradle.internal.tasks.CheckAarMetadataWorkAction>().configureEach {
+}
+tasks.matching { it.name.contains("AarMetadata") }.configureEach {
+    enabled = false
+}
