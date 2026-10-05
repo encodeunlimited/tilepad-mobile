@@ -15,7 +15,7 @@ val tauriProperties = Properties().apply {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
     namespace = "com.jacobtread.tilepad.mobile"
     defaultConfig {
         manifestPlaceholders["usesCleartextTraffic"] = "false"
